@@ -1,0 +1,10 @@
+前端 /static 存储
+vue js html mavon-editor
+后端
+node 
+express
+mysql
+"body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+注意express默认304缓存返回
