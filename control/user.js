@@ -7,7 +7,7 @@ function get(req, res) {
     if(verifyToken(user_id))   sql=`select * from user `;
     else  sql =  `select name,say,img,content_say,introduce from user `
 
-   
+    console.log(sql);  
  
     execSQL(sql)
         .then((result) => {

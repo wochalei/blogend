@@ -24,8 +24,9 @@ function getBlogList(req, res) {
 
     return;
   }
-  if (page) {
-    sql = `select  * from blog limit ${pageSize} OFFSET ${start}`
+  if (!title) {
+    sql = `select  * from blog limit ${pageSize} OFFSET ${start}`;
+    
     execSQL(sql)
       .then((result) => {
         let sql = `select count(*) from blog  `;
@@ -41,11 +42,14 @@ function getBlogList(req, res) {
         res.send(new ErrorMode("getBlogList错误"));
       })
   }else{
+    sql = `select * from blog where title like ${mysql.escape("%"+title+"%")} limit ${pageSize} OFFSET ${start}`;
     execSQL(sql)
     .then((result) => {
-      let sql = `select count(*) from blog where title like ${mysql.escape("%"+title+"%")} `;
+      sql = `select count(*) from blog where title like ${mysql.escape("%"+title+"%")}`
+      console.log(sql);
       execSQL(sql)
         .then(count => {
+          console.log(count);
           let allCount = count[0]['count(*)'];
           res.send({ data: result, allCount, error: 0 });
         })
