@@ -188,7 +188,7 @@ function searchType(req, res) {
 function getAll (req, res){
 
 
- let sql = `select blog_id ,created ,title from blog `
+ let sql = `select blog_id ,created ,title,type from blog `
   
 execSQL(sql)
     .then((result) => {
