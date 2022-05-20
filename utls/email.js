@@ -21,8 +21,10 @@ function  sendMail(target, { title, content }) {
       },
       (err, msg) => {
         if (err) {
+          console.log(1111);
           reject(err);
         } else {
+        
           resolve(msg);
         }
       },

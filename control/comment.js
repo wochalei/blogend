@@ -56,7 +56,7 @@ function reply(req,res){
      add(req,res);
    })
    .catch(e=>{
-     console.log(e);
+    res.send(new ErrorMode('邮箱错误'));
    })
 } 
 module.exports={
